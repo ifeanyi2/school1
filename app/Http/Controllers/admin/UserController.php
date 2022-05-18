@@ -89,6 +89,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        @unlink('uploads/user_images/'.$user->image);
         $user->delete();
         $notification = [
             'message' => 'User account deleted Successfully',
